@@ -1,0 +1,80 @@
+Paste this into the new file named **`admin/index.html`**:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edu Box Admin</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <main class="admin-shell">
+    <header class="topbar">
+      <a class="brand" href="../index.html">← Edu Box Booking</a>
+      <span class="secure-label">Admin access</span>
+    </header>
+
+    <section id="setup-message" class="panel notice hidden" aria-live="polite">
+      Firebase is not configured. Complete the Firebase setup in README.md, then reload this page.
+    </section>
+
+    <section id="login-panel" class="panel login-panel hidden">
+      <p class="eyebrow">EDU BOX</p>
+      <h1>Admin sign in</h1>
+      <p class="muted">Sign in with the admin account created in Firebase Authentication.</p>
+      <form id="login-form">
+        <label for="email">Admin email</label>
+        <input id="email" type="email" autocomplete="username" required />
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" required />
+        <button class="primary-button" type="submit">Sign in</button>
+        <p id="login-error" class="error" role="alert"></p>
+      </form>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="dashboard-heading">
+        <div>
+          <p class="eyebrow">BOOKING MANAGEMENT</p>
+          <h1>Bookings</h1>
+          <p id="signed-in-as" class="muted"></p>
+        </div>
+        <button id="signout-button" class="secondary-button" type="button">Sign out</button>
+      </div>
+      <section class="panel">
+        <div class="toolbar">
+          <div>
+            <strong id="booking-count">0 bookings</strong>
+            <p class="muted">Bookings are shared from Firebase.</p>
+          </div>
+          <div class="toolbar-actions">
+            <input id="search" type="search" placeholder="Search bookings" aria-label="Search bookings" />
+            <button id="refresh-button" class="secondary-button" type="button">Refresh</button>
+          </div>
+        </div>
+        <p id="dashboard-status" class="status" aria-live="polite"></p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date &amp; time</th>
+                <th>Name &amp; contact</th>
+                <th>Device</th>
+                <th>Faculty</th>
+                <th>Reason</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="bookings-body"></tbody>
+          </table>
+        </div>
+        <div id="empty-state" class="empty-state hidden">No bookings found.</div>
+      </section>
+    </section>
+  </main>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
+```
